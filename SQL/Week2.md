@@ -175,7 +175,8 @@ WHERE절은 조건을 걸어서 필요한 행만 필터링하는 부분이다.
 
 # 2️⃣ 학습 인증란
 
-<!-- 이 글을 지우고, 여기에 학습한 것을 인증해주세요.-->
+<img width="488" height="828" alt="image" src="https://github.com/user-attachments/assets/c907bfda-4602-4eb9-83db-5fae12bc8b3c" />
+
 
 
 
