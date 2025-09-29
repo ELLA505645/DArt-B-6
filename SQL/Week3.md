@@ -155,6 +155,7 @@ TIMESTAMP <-> DATETIME 변환을 해야하는 경우도 존재함
 <br>
 
 ---
+<img width="483" height="813" alt="image" src="https://github.com/user-attachments/assets/9152497b-9707-479d-a7c6-b2d9568774bb" />
 
 # 2️⃣ 확인문제 & 문제 인증
 
@@ -202,6 +203,7 @@ FROM USER_INFO
 WHERE JOINED BETWEEN '2021-01-01' AND '2021-12-31'
   AND AGE BETWEEN 20 AND 29;
 ~~
+
 
 
 
