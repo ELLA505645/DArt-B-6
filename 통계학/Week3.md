@@ -74,8 +74,15 @@ EDA를 할 때는 극단적인 해석을 피하고 지나친 추론이나 자의
 > **교재에 있는 실습 파트를 직접 따라 해보세요. 실습을 완료한 뒤, 결과화면(캡처 또는 코드 결과)을 첨부하여 인증해 주세요.단순 이론 암기보다, 직접 손으로 따라해보면서 실습해 보는 것이 가장 확실한 학습 방법입니다.**
 >
 > > **인증 예시 : 통계 프로그램 결과, 시각화 이미지 캡처 등**
+<img width="750" height="578" alt="image" src="https://github.com/user-attachments/assets/67357c43-34a5-4117-8b8b-96ef7dfd676e" />
+<img width="742" height="561" alt="image" src="https://github.com/user-attachments/assets/419dbbff-b58d-4dbf-a963-7299461f8411" />
 
-<!-- 이 주석을 지우고 “실습 결과 화면(캡처)을 이곳에 첨부해주세요.-->
+
+<img width="748" height="704" alt="image" src="https://github.com/user-attachments/assets/220bf8d8-89bc-4426-82a5-a8abc5cd14d8" />
+<img width="801" height="463" alt="image" src="https://github.com/user-attachments/assets/c9cf3b6d-4bf7-46a1-af33-96f971110ada" />
+<img width="761" height="658" alt="image" src="https://github.com/user-attachments/assets/6572c81c-92d6-4b49-bed6-1d2fa55adee9" />
+
+
 
 ~~~
 인증 이미지가 없으면 과제 수행으로 인정되지 않습니다.
