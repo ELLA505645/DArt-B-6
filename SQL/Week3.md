@@ -95,7 +95,18 @@ ex. CAST(1 AS STRING) #숫자 1을 문자 1로 변경
 * 문자열 함수들의 종류를 이해하고 어떠한 상황에서 사용하는지 설명할 수 있다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+문자열은 "안녕하세요","카일스쿨"등의 형식이다. 
+문자열 함수에는 CONCAT, SPLIT, REPLACE, TRIM, UPPER 등이 있다. 
+1) CONCAT
+- 문자열을 연결하는 함수로서 여러 문자열을 하나로 합치고 싶을 때 사용
+2) SPLIT
+- 구분자(ex.쉼표, 공백, 하이픈)를 기준으로 문자열을 잘라 배열이나 여러 부분으로 나눌 때 사용
+3) REPLACE
+- 문자열을 치환하는 함수로서 특정 문자열을 다른 문자열로 바꿀 때 사용
+4) TRIM
+- 공백을 제거하는 함수로서 문자열 앞뒤에 불필요하게 들어간 공백, 특수문자 등을 제거할 때 사용
+5) UPPER
+- 대문자로 변환하는 함수로서, 문자열을 모두 대문자로 바꾸고 싶을 때 사용
 
 
 
@@ -108,9 +119,36 @@ ex. CAST(1 AS STRING) #숫자 1을 문자 1로 변경
 * 시간함수들의 종류와 시간의 차이를 추출하는 방법을 설명할 수 있다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+*개발할 때 사용하는 시간의 개념은 다르다
 
+날짜 및 시간 데이터 타입에는 DATE, DATETIME, TIMESTAMP가 있다. 
 
+UTC란?
+Universal Time Coordinated의 약자로서 국제적인 표준 시간을 의미함
+
+1) DATE: DATE만 표시하는 데이터 (2023-12-31)
+2) DATETIME: DATE와 TIME까지 표시하는 데이터, (2023-12-31 14:00:00)
+3) TIME: 날짜와 무관하게 시간만 표시하는 데이터 (23:59:59)
+4) TIMESTAMP: 시간 도장으로서, UTC부터 경과한 시간을 나타내는 값
+
+*millisecond: 시간의 단위, 천분의 1초, 빠른 반응이 필요한 분야에서 사용(초보다 더 정확하다)
+*microsecond: 1/1,000,000초
+
+<시간 데이터를 변환하는 방법>
+TIMESTAMP <-> DATETIME 변환을 해야하는 경우도 존재함
+
+<시간함수들의 종류 및 시간 차이>
+1) TIMESTAMP(한국 시간에서 -9시간)
+2) DATETIME(한국 zone 사용시 한국 시간과 동일)
+
+<시간의 차이를 추출하는 방법>
+1) 요일을 추출하고 싶은 경우
+  EXTRACT(DATE FROM DATETIME "2024-01-02 14:00:00") AS date,
+  EXTRACT(YEAR FROM DATETIME "2024-01-02 14:00:00") AS year,
+  EXTRACT(MONTH FROM DATETIME "2024-01-02 14:00:00") AS month,
+  EXTRACT(DAY FROM DATETIME "2024-01-02 14:00:00") AS day,
+  EXTRACT(HOUR FROM DATETIME "2024-01-02 14:00:00") AS hour,
+  EXTRACT(MINUTE FROM DATETIME "2024-01-02 14:00:00") AS minute
 
 <br>
 
@@ -157,13 +195,15 @@ WHERE AGE BETWEEN 20 AND 29
   AND JOINED BETWEEN '2021-01-01' AND '2021-12-31';
   
 오류 메시지 : SELECT list expression references column AGE which is neither grouped nor aggregated
-~~~
 
 
 
-~~~
-여기에 답을 작성해주세요!
-~~~
+~~
+SELECT COUNT(*) AS USERS
+FROM USER_INFO
+WHERE JOINED BETWEEN '2021-01-01' AND '2021-12-31'
+  AND AGE BETWEEN 20 AND 29;
+~~
 
 
 
