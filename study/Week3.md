@@ -19,7 +19,7 @@ ex. 어닝쇼크(실적부진), 소송, 노사분규 등
 
 <img width="492" height="295" alt="image" src="https://github.com/user-attachments/assets/8b0759d0-56ec-45d1-bca1-72477e7aa3af" />
 
-1) 포트폴리오에 주식을 적게 넣으면위험이 크고 비체계적 위험이 많다. 
+1) 포트폴리오에 주식을 적게 넣으면 위험이 크고 비체계적 위험이 많다. 
 
 2) 주식 수를 늘려가면 비체계적 위험은 점점 줄어들고, 결국 체계적 위험만 남는다.
 
@@ -27,7 +27,7 @@ ex. 어닝쇼크(실적부진), 소송, 노사분규 등
 
 ### 포트폴리오 위험
 ~~~
-(개별수익률의 분산)+(기타수익률 간의 공분산)
+(개별수익률의 분산)+(기타수익률 간의 공분산(자산들 간의 움직임)
 ~~~
 
 <img width="515" height="176" alt="image" src="https://github.com/user-attachments/assets/187dc06c-0daf-4e92-9e9f-8a9b2d1cff70" />
