@@ -30,10 +30,10 @@ ex. 어닝쇼크(실적부진), 소송, 노사분규 등
 (개별수익률의 분산)+(기타수익률 간의 공분산)
 ~~~
 
-!그림 3-10
+<img width="515" height="176" alt="image" src="https://github.com/user-attachments/assets/187dc06c-0daf-4e92-9e9f-8a9b2d1cff70" />
 
 *n이 무한대에 가까워질 때
-(그림첨부)
+
 
 ! 포트폴리오의 구성 주식 수가 무한대로 커지면 개별 주식의 분산은 의미가 없어지고 주식 간 공분산만 남게된다. 
 
@@ -56,8 +56,7 @@ ex. 정부발행채권 등
 ### "효율적 포트폴리오"
 라고 한다.
 
-! 그림 3-12
-
+<img width="327" height="305" alt="image" src="https://github.com/user-attachments/assets/86167262-f727-4f0f-8ab1-3c956ee6430d" />
 (*표시는 공매도했다는 뜻)
 
 ### 투자기회집합
@@ -74,15 +73,13 @@ ex. 정부발행채권 등
 ### 무차별곡선
 에서 아래로 볼록한 우상향의 형태를 갖는 것으로 표시할 수 있음. 
 
-! 그림 3-14
-
+<img width="414" height="375" alt="image" src="https://github.com/user-attachments/assets/aabeb6fc-6ff6-41d6-a5a4-08fec9d266d0" />
 - 투자자 위험회피도가 클수록 기울기가 더욱 가파르다. 
 - 여러 개의 무차별곡선 중 상대적으로 위쪽에 있는 곡선이 더 높은 효용을 나타낸다. 
 
 ### 최적의 포트폴리오를 선택하는 방법
 
-! 그림 3-14
-
+<img width="414" height="375" alt="image" src="https://github.com/user-attachments/assets/51421cb1-f751-4f7f-8e70-59b7ba84bf93" />
 최적의 포트폴리오는 효율적 투자선과 투자자의 무차별곡선이 접하는 점에서 결정된다.
 1) 위험회피적인 투자자1은 상대적으로 기대수익률이 작으나 위험도가 작은 E를 선택
 2) 투자자2는 상대적으로 위험이 크지만 기대수익률도 큰 F를 선택
@@ -98,7 +95,8 @@ ex. 정부발행채권 등
 투자자는 효율적 투자선 위의 여러 포트폴리오 중 하나를 선택해야 한다. 
 투자자는 자신의 위험 성향과 맞는 포트폴리오를 선택할 것이다. 
 
-! 그림 3-19
+<img width="719" height="331" alt="image" src="https://github.com/user-attachments/assets/d2c4013a-5bdb-4b4a-b2bb-e9c82535d1df" />
+
 
 왼쪽 그래프: 무위험자산이 없는 경우
 1) 위험을 아주 싫어하는 투자자의 경우) P1을 선택
@@ -118,7 +116,8 @@ ex. 정부발행채권 등
 다섯개 주식의 1년치 수정주가를 가지고 비중을 달리하는 수만 개의 포트폴리오를 만들어 효율적 투자선을 코드로 구현해보자!
 ~~~
 
-! 그림 3-20
+<img width="509" height="441" alt="image" src="https://github.com/user-attachments/assets/c57ff66c-4795-4d95-8d4b-70dcb7e41631" />
+
 
 완성된 효율적 포트폴리오
 
