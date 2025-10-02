@@ -75,12 +75,14 @@ ex. 정부발행채권 등
 에서 아래로 볼록한 우상향의 형태를 갖는 것으로 표시할 수 있음. 
 
 <img width="414" height="375" alt="image" src="https://github.com/user-attachments/assets/aabeb6fc-6ff6-41d6-a5a4-08fec9d266d0" />
+
 - 투자자 위험회피도가 클수록 기울기가 더욱 가파르다. 
 - 여러 개의 무차별곡선 중 상대적으로 위쪽에 있는 곡선이 더 높은 효용을 나타낸다. 
 
 ### 최적의 포트폴리오를 선택하는 방법
 
 <img width="414" height="375" alt="image" src="https://github.com/user-attachments/assets/51421cb1-f751-4f7f-8e70-59b7ba84bf93" />
+
 최적의 포트폴리오는 효율적 투자선과 투자자의 무차별곡선이 접하는 점에서 결정된다.
 1) 위험회피적인 투자자1은 상대적으로 기대수익률이 작으나 위험도가 작은 E를 선택
 2) 투자자2는 상대적으로 위험이 크지만 기대수익률도 큰 F를 선택
