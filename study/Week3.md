@@ -27,7 +27,7 @@ ex. 어닝쇼크(실적부진), 소송, 노사분규 등
 
 ### 포트폴리오 위험
 ~~~
-(개별수익률의 분산)+(기타수익률 간의 공분산(자산들 간의 움직임)
+(개별수익률의 분산)+(기타수익률 간의 공분산(자산들 간의 움직임))
 ~~~
 
 <img width="515" height="176" alt="image" src="https://github.com/user-attachments/assets/187dc06c-0daf-4e92-9e9f-8a9b2d1cff70" />
