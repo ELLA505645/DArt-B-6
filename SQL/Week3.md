@@ -155,6 +155,7 @@ TIMESTAMP <-> DATETIME 변환을 해야하는 경우도 존재함
 <br>
 
 ---
+<img width="483" height="813" alt="image" src="https://github.com/user-attachments/assets/9152497b-9707-479d-a7c6-b2d9568774bb" />
 
 # 2️⃣ 확인문제 & 문제 인증
 
@@ -168,9 +169,7 @@ TIMESTAMP <-> DATETIME 변환을 해야하는 경우도 존재함
 >
 > :  https://school.programmers.co.kr/learn/courses/30/lessons/131535#
 
-<!-- 문제를 풀기 위하여 로그인이  필요합니다. -->
-
-<!-- 정답을 맞추게 되면, 정답입니다. 라는 칸이 생성되는데 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. --> 
+<img width="687" height="194" alt="image" src="https://github.com/user-attachments/assets/531e3398-017c-4d9a-9378-54f7be11b308" />
 
 
 
@@ -204,6 +203,7 @@ FROM USER_INFO
 WHERE JOINED BETWEEN '2021-01-01' AND '2021-12-31'
   AND AGE BETWEEN 20 AND 29;
 ~~
+
 
 
 
