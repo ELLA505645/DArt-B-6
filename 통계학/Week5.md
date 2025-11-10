@@ -179,7 +179,12 @@ For example
 >
 > > **인증 예시 : 통계 프로그램 결과, 시각화 이미지 캡처 등**
 
-<!-- 이 주석을 지우고 “실습 결과 화면(캡처)을 이곳에 첨부해주세요.-->
+<img width="710" height="687" alt="image" src="https://github.com/user-attachments/assets/c893d40c-b1a3-4369-ade0-be7746c1c596" />
+<img width="782" height="703" alt="image" src="https://github.com/user-attachments/assets/7d393b56-8803-402a-bc99-8970e85dc538" />
+<img width="754" height="489" alt="image" src="https://github.com/user-attachments/assets/a2455b2a-eeb6-41a5-afd1-08a0ebbe4c62" />
+<img width="761" height="637" alt="image" src="https://github.com/user-attachments/assets/3f0aa4be-24a6-4677-96e6-acb89329ddd0" />
+<img width="776" height="667" alt="image" src="https://github.com/user-attachments/assets/3cc0fd99-9bb1-47a1-aeda-22352522e8d5" />
+
 
 ~~~
 인증 이미지가 없으면 과제 수행으로 인정되지 않습니다.
