@@ -129,7 +129,7 @@
   <img width="779" height="391" alt="image" src="https://github.com/user-attachments/assets/8e283c45-36ff-4996-86f6-de96cd582027" />
 
 ~~~
-Insight
+📍 Insight
 
 (1) budget과 revenue가 약하게 영향을 미친다
 
@@ -151,7 +151,7 @@ Insight
 <img width="546" height="542" alt="image" src="https://github.com/user-attachments/assets/0f6b617e-f3df-4745-b165-54b068db8a9e" />
 
 ~~~
-Insight
+📍 Insight
 
 (1) 대부분의 영화가 budget보다 revenue가 크다
 ~~~
@@ -182,7 +182,7 @@ Insight
 <img width="371" height="347" alt="image" src="https://github.com/user-attachments/assets/25be2fdb-aac2-4ae2-9441-837bd4baa605" />
 
 ~~~
-Insight
+📍 Insight
   
 (1) 드라마 장르가 가장 수가 많다
 
@@ -201,7 +201,7 @@ Insight
   <img width="738" height="280" alt="image" src="https://github.com/user-attachments/assets/1780981f-a613-4409-88b1-3c8698b7159b" />
 
 ~~~
-Insight
+📍 Insight
 
 (1) 시간 흐름에 따른 분포를 보기 위한 과정
 
@@ -228,7 +228,7 @@ Insight
 <img width="746" height="379" alt="image" src="https://github.com/user-attachments/assets/f072495f-911d-42bf-abc8-7b1b55c92741" />
 
 ~~~
-Inisght
+📍 Inisght
 
 (1) 투표 수가 많을 수록 동그라미의 크기가 커진다
 
