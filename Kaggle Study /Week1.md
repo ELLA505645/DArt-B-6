@@ -311,4 +311,4 @@ Toy Story를 입력하면?
 > 추천 결과
 <img width="467" height="529" alt="image" src="https://github.com/user-attachments/assets/56b5f66e-49eb-435f-84de-58214d4c064c" />
 
-Movie Recommendation System 완성!!!!!
+**👏👏👏 Movie Recommendation System 완성!!!!!👏👏👏**
