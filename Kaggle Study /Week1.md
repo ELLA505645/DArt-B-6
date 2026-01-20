@@ -35,7 +35,7 @@
 
 - **from sklearn.feature_extraction.text import TfidfVectorizer**
   
-  텍스트를 벡터로 변환하느는 도구 (영화 설명/키워드/장르 등을 벡터화)
+  텍스트를 벡터로 변환하는 도구 (영화 설명/키워드/장르 등을 벡터화)
 
 - **from sklearn.metrics.pairwise import cosine_similarity**
   
@@ -254,7 +254,8 @@
 - **df['weighted_average'] = (R*v + C*m)/(v+m)**
 
 *R * v: 영화 자신의 평점 X 투표 수 (이 영화에 대한 실제 평가 총량)*
-*C * m: 전체 평균 평점 X 기준 투표 수 ( 전체 평균을 기준으로 값이 튀지 않게 보정하는 과정)*
+
+*C * m: 전체 평균 평점 X 기준 투표 수 (전체 평균을 기준으로 값이 튀지 않게 보정하는 과정)*
 
 - **MinMaxScaler를 사용해서 정규화**
 
@@ -312,3 +313,23 @@ Toy Story를 입력하면?
 <img width="467" height="529" alt="image" src="https://github.com/user-attachments/assets/56b5f66e-49eb-435f-84de-58214d4c064c" />
 
 **👏👏👏 Movie Recommendation System 완성!!!!!👏👏👏**
+
+
+
+# 2️⃣ 중요했던 point
+
+- 추천 시스템을 만드는 방식
+
+  (1) 해당 영화에 대한 실제 평가
+  
+  (2) 전체 평균과 비교하였을 때 전체에서 어느정도의 수치를 의미하는 것인지
+  
+  (3) 입력한 값과 컨텐츠 및 텍스트 내용이 얼마나 유사한지
+  
+  (4) 항목들에 가중을 둬서 추천 결과를 도출한다!
+
+
+# 3️⃣ 
+
+시각화 종류가 많아서 다양하게 학습할 수 있었고, 텍스트를 숫자 벡터로 바꾸는 벡터화 함수에 대해 배웠다!
+
