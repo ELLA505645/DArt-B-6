@@ -81,7 +81,7 @@ isna()에서 결측치면 True, 아니면 False -> Sum()을 통해서 True값을
 catsplit
 *실제 카테고리 형태: Home&Kitchen|Kitchen&HomeAppliances|Vacuum
 
-카테고리 처리를 |를 기준으로 split해달라. expand=True는 split된 것들을 리스트로 두지말고 컬럼 여러개로 펼쳐달라는 뜻.
+카테고리 처리를 |를 기준으로 split해달라. expand=True는 split된 것들을 리스트로 두지말고 컬럼 여러개로 펼쳐달라는 뜻. (expand=False면 결과값을 리스트 형태로 한 셀에 유지시켜줌)
 
 - catsplit = catsplit.rename(columns={0:'category_1', 1:'category_2', 2:'category_3'})
 
@@ -135,9 +135,42 @@ category는 범주형 타입을 말함.
 > 결과
 <img width="1615" height="139" alt="image" src="https://github.com/user-attachments/assets/daa00e47-0af2-47a0-9c20-a82bfe854dd5" />
 
-  
+- reviewer_id_exp = reviewer_id_split.explode()
 
+⭐️explode() 함수: 리스트를 행 방향으로 풀어버리는 함수
+  <img width="683" height="89" alt="image" src="https://github.com/user-attachments/assets/a2d72b48-24c7-44f0-b69f-1b31a7314d00" />
+->
+<img width="708" height="204" alt="image" src="https://github.com/user-attachments/assets/dfec1c98-5a14-4667-a6fc-671af1929ce7" />
+->
+여기서 reset_index(drop=True) 활용하여 인덱싱 다시 해줌
 
+- df21 = pd.DataFrame(data=reviewer_id_clean)
+df22 = pd.DataFrame(data=reviewer_name_clean)
+
+새로 정리된 데이터들 new 데이터프레임으로 받아준다
+
+~~~
+❓ 데이터를 그냥 받는거랑 DataFrame으로 받는거랑 차이점이 뭘까?
+
+- 그냥 받을때는, Series로 타입이 유지되는 경우
+reviewer_id_exp = reviewer_id_split.explode()
+*따로 감쌀 필요없이 그대로 출력해도 됨
+
+- 데이터프레임으로 받을때는, Series를 DataFrame으로 받고 싶은 경우
+df21 = pd.DataFrame(data=reviewer_id_clean)
+*전체를 감싸서 바꾸고 싶을 경우 사용
+
+두개를 잘 구분하는 것이 중요할 것 같다!
+~~~
+
+- df2 = pd.merge(df21, df22, left_index=True, right_index=True)
+
+user_id랑 user_name이랑 merge 처리해준다 (앞에서 자르고 split하고 했지만 순서는 그대로 유지되기 때문에 merge가능)
+
+> 결과값
+<img width="482" height="240" alt="image" src="https://github.com/user-attachments/assets/a8c5bc5f-6fd9-4e02-b488-2b250e30c2cf" />
+
+## 3. 시각화
 
 
 
