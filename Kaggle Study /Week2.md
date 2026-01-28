@@ -251,16 +251,53 @@ df1.corr() : df1의 수치형 컬럼들만 자동으로 선택
 
 산점도 그리기
 
+
+<img width="698" height="333" alt="image" src="https://github.com/user-attachments/assets/91859697-acdc-45c2-9bae-648a19cd6cd0" />
+
 히트맵 확인 후 상관관계가 있어보이는 두 변수 discounted_price와 actual price를 선택해서 산점도를 확인함 
 
 (근데 약간 당연한거 아닌가....하는 의문)
 
 -> 다른 변수들간에는 크게 상관관계가 없다는걸로 해석하면 좋을듯
 
+### <주제3: rating>
+
+- sns.histplot(ax=ax[0], data=df1, x='rating', bins=15, kde=True, color='blue')
+
+bins= 15 라는 것은 막대그래프가 15개가 되도록 그리는 것
+
+(값이 촘촘한지, 분포가 넓은지에 따라서 bins의 숫자를 조정해줄 수 있다)
+
+kde = True: 분포 곡선 추가
+
+> 결과
+<img width="706" height="257" alt="image" src="https://github.com/user-attachments/assets/78efb240-6247-43a8-9445-84d5af281bcc" />
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+*전형적인 결과
+
+1) 평점이 3.5~4.5가 가장 많음
+2) amount of ratings가 인기있는 상품에는 많고, 대부분 리뷰 수가 거의 없음
 
 
+- boxplot
+
+  <img width="736" height="419" alt="image" src="https://github.com/user-attachments/assets/1a89a297-47c5-4069-9b00-11998f62922a" />
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+> 이런 판매 데이터에서 boxplot을 활용하면 제품별로 중앙값, 최소/최대, 이상치 등등을
+한번에 비교할 수 있어서 좋은 것 같다!!
+
+- rate_main_cat = df1.groupby(['category_1','rating_score']).agg('count').iloc[:,1].rename_axis().reset_index(name='Amount')
+
+category1과 rating_score를 groupby해서 category1별로 각 rating_score에 해당하는 개수를 셀거다,
 
 
+### <주제4: Reviewers>
+
+> 이런 분석을 왜하는지 지피티에 물어봐놔ㅣㅆ음
+>
+> 
 
 
 
