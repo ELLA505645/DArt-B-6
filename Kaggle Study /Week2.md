@@ -95,7 +95,48 @@ df1['category_2'] = catsplit['category_2']
 
 이후에 df1에 추가해줌
 
+<img width="402" height="161" alt="image" src="https://github.com/user-attachments/assets/9d407b19-c982-499e-b623-67026b754be8" />
+
 <img width="1599" height="147" alt="image" src="https://github.com/user-attachments/assets/0aca9fd1-6cc6-4c22-9ec3-dce4a96cb2d8" />
+
+-df1['product_id'].str.strip()
+
+strip()함수는 문자열 앞뒤 공백을 제거해주는 역할
+
+- score에 대한 분류 네이밍을 별도로 해줌
+~~~
+rating_score = []
+
+for score in df1['rating']:
+    if score < 2.0 : rating_score.append('Poor')
+    elif score < 3.0 : rating_score.append('Below Average')
+    elif score < 4.0 : rating_score.append('Average')
+    elif score < 5.0 : rating_score.append('Above Average')
+    elif score == 5.0 : rating_score.append('Excellent')
+~~~
+
+- df1['rating_score'] = df1['rating_score'].astype('category')
+
+category는 범주형 타입을 말함. 
+*위의 분류처럼 정해진 라벨 집합을 다룰때 좋다!
+
+- df1['rating_score'] = df1['rating_score'].cat.reorder_categories(['Below Average', 'Average', 'Above Average', 'Excellent'], ordered=True)
+
+- ⭐️cat.reorder_categories() 함수
+
+  category(범주형) 데이터에 순서를 부여해주는 함수
+
+ ordered = True로 두면 아래->위 순서
+
+ - df1['difference_price'] = df1['actual_price'] - df1['discounted_price']
+
+   (실제가 - 할인가) 컬럼을 새로 만들어줌
+
+> 결과
+<img width="1615" height="139" alt="image" src="https://github.com/user-attachments/assets/daa00e47-0af2-47a0-9c20-a82bfe854dd5" />
+
+  
+
 
 
 
