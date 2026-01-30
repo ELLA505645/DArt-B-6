@@ -10,6 +10,7 @@ df_model  # 모델 입력용
 
 *제일 기본적인 전처리 방식
 # Data Cleaning & Preparation
+
 ~~~
 1. Changing Data Types of Columns from object to Floats
 2. Filling in Missing Information
