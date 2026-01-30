@@ -56,3 +56,16 @@ t-통계량은 두개의 평점을 비교하는 것.
 평균 평점이 비슷할수록 통계량의 절대값이 작아질 것임
 (p-value가 커짐)
 -> 귀무가설을 기각할만한 근거가 불충분
+
+
+❓ 데이터를 그냥 받는거랑 DataFrame으로 받는거랑 차이점이 뭘까?
+
+- 그냥 받을때는, Series로 타입이 유지되는 경우
+reviewer_id_exp = reviewer_id_split.explode()
+*따로 감쌀 필요없이 그대로 출력해도 됨
+
+- 데이터프레임으로 받을때는, Series를 DataFrame으로 받고 싶은 경우
+df21 = pd.DataFrame(data=reviewer_id_clean)
+*전체를 감싸서 바꾸고 싶을 경우 사용
+
+두개를 잘 구분하는 것이 중요할 것 같다!
