@@ -10,14 +10,13 @@ df_model  # 모델 입력용
 
 *제일 기본적인 전처리 방식
 # Data Cleaning & Preparation
-
-```python
+~~~
 1. Changing Data Types of Columns from object to Floats
 2. Filling in Missing Information
 3. Checking For Duplicate Rows
 4. Splitting Long Strings -> 'catagory' 'about_product' 등등
 5. Creating Various New Columns
-```
+~~~
 
 strip(): 공벡제거
 
@@ -29,12 +28,12 @@ Encoding하는 이유: 모든 문자형을 숫자로 바꿔주는 과정 -> 컴�
 
 *value_counts 사용법
 
-```python
+~~~python
 #1
 df['rating'].value_counts()
 #2
 df.value_counts('rating')
-```
+~~~
 
 1. 1번은 결측치 미포함 / 2번은 포함 
 2. 1번은 단일 컬럼 인덱싱 / 2번은 multiindex가 가능함 ex) rating과 category 조합의 고유값이 얼마나 존재하는지 알고 싶은 경우 사용가능 ⭐ her 개유용하잖아 이걸 지금 알다니
