@@ -208,7 +208,7 @@ user_id랑 user_name이랑 merge 처리해준다 (앞에서 자르고 split하�
 
   icefire 색상 팔레트는 대비가 강한 색상 조합이라서 barplot같은 시각화에 잘 어울림
 
-### <주제1: Product Category>
+### ✅ <주제1: Product Category>
 *category_1과 category_2의 관계를 파악하는 것이 목적
 
 - **main_sub = df1[['category_1', 'category_2', 'product_id']]**
@@ -239,7 +239,7 @@ user_id랑 user_name이랑 merge 처리해준다 (앞에서 자르고 split하�
 -> 그중에서도 acccessories & peripherals 상품들이 가장 많다
 
 
-### <주제2: Correlation between Features>
+### ✅ <주제2: Correlation between Features>
 *변수들간의 상관관계를 파악하는 것이 목적
 
 - **sns.heatmap(ax=ax[0], data=df1.corr())**
@@ -260,7 +260,7 @@ df1.corr() : df1의 수치형 컬럼들만 자동으로 선택
 
 -> 다른 변수들간에는 크게 상관관계가 없다는걸로 해석하면 좋을듯
 
-### <주제3: rating>
+### ✅ <주제3: rating>
 
 - **sns.histplot(ax=ax[0], data=df1, x='rating', bins=15, kde=True, color='blue')**
 
@@ -272,7 +272,8 @@ kde = True: 분포 곡선 추가
 
 > 결과
 <img width="706" height="257" alt="image" src="https://github.com/user-attachments/assets/78efb240-6247-43a8-9445-84d5af281bcc" />
-ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
 *전형적인 결과
 
 1) 평점이 3.5~4.5가 가장 많음
@@ -293,7 +294,7 @@ kde = True: 분포 곡선 추가
 category1과 rating_score를 groupby해서 category1별로 각 rating_score에 해당하는 개수를 셀거다,
 
 
-### <주제4: Reviewers>
+### ✅ <주제4: Reviewers>
 
 - **top_reviewer = data=df2['user_name'].value_counts()**
 
@@ -304,20 +305,20 @@ category1과 rating_score를 groupby해서 category1별로 각 rating_score에 �
 
 1️⃣ 평점/리뷰를 의사결정에 쓰려고 할 때
 
-어떤 상품이 평점도 높고, 리뷰수가 많은데 소수의 계정에서 나온거라면,
+- 어떤 상품이 평점도 높고, 리뷰수가 많은데 소수의 계정에서 나온거라면,
 
 리뷰 데이터의 대표성이 의심됨
 
 2️⃣ 리뷰 조작 가능성 or 이상 패턴 탐지
 
-한 사람이 짧은 기간에 반복 리뷰, 수십개 상품을 리뷰
+- 한 사람이 짧은 기간에 반복 리뷰, 수십개 상품을 리뷰
 
 3️⃣ 익명 리뷰 구조를 이해
 
-“Amazon Customer”, “Kindle Customer" 이름은 실제 사용자명이 아니라 플랫폼에서 자동으로 처리된 공용 표시명
-
--> 아, user_name은 개인 식별자로 부적절하구나 를 판단할 수 있다
+- “Amazon Customer”, “Kindle Customer" 이름은 실제 사용자명이 아니라 플랫폼에서 자동으로 처리된 공용 표시명
 ~~~
+-> 아, user_name은 개인 식별자로 부적절하구나 를 판단할 수 있다
+
 
 
 
