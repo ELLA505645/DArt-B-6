@@ -262,7 +262,7 @@ df1.corr() : df1의 수치형 컬럼들만 자동으로 선택
 
 ### <주제3: rating>
 
-- sns.histplot(ax=ax[0], data=df1, x='rating', bins=15, kde=True, color='blue')
+- **sns.histplot(ax=ax[0], data=df1, x='rating', bins=15, kde=True, color='blue')**
 
 bins= 15 라는 것은 막대그래프가 15개가 되도록 그리는 것
 
@@ -279,7 +279,7 @@ kde = True: 분포 곡선 추가
 2) amount of ratings가 인기있는 상품에는 많고, 대부분 리뷰 수가 거의 없음
 
 
-- boxplot
+- **boxplot**
 
   <img width="736" height="419" alt="image" src="https://github.com/user-attachments/assets/1a89a297-47c5-4069-9b00-11998f62922a" />
 
@@ -288,20 +288,44 @@ kde = True: 분포 곡선 추가
 > 이런 판매 데이터에서 boxplot을 활용하면 제품별로 중앙값, 최소/최대, 이상치 등등을
 한번에 비교할 수 있어서 좋은 것 같다!!
 
-- rate_main_cat = df1.groupby(['category_1','rating_score']).agg('count').iloc[:,1].rename_axis().reset_index(name='Amount')
+- **rate_main_cat = df1.groupby(['category_1','rating_score']).agg('count').iloc[:,1].rename_axis().reset_index(name='Amount')**
 
 category1과 rating_score를 groupby해서 category1별로 각 rating_score에 해당하는 개수를 셀거다,
 
 
 ### <주제4: Reviewers>
 
-> 이런 분석을 왜하는지 지피티에 물어봐놔ㅣㅆ음
->
-> 
+- **top_reviewer = data=df2['user_name'].value_counts()**
+
+- user_name기준으로 숫자 세줌
+
+~~~
+❓Reviewers로 barplot을 왜 만들어보냐?
+
+1️⃣ 평점/리뷰를 의사결정에 쓰려고 할 때
+
+어떤 상품이 평점도 높고, 리뷰수가 많은데 소수의 계정에서 나온거라면,
+
+리뷰 데이터의 대표성이 의심됨
+
+2️⃣ 리뷰 조작 가능성 or 이상 패턴 탐지
+
+한 사람이 짧은 기간에 반복 리뷰, 수십개 상품을 리뷰
+
+3️⃣ 익명 리뷰 구조를 이해
+
+“Amazon Customer”, “Kindle Customer" 이름은 실제 사용자명이 아니라 플랫폼에서 자동으로 처리된 공용 표시명
+
+-> 아, user_name은 개인 식별자로 부적절하구나 를 판단할 수 있다
+~~~
 
 
 
+# 2️⃣ 느낀점
 
+시각화를 어떻게 하느냐에 따라서 데이터에 대해 판단할 수 있는 방법이 무궁무진하다
+
+잘 익혀놓자!!
 
 
 
