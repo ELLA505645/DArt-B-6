@@ -14,7 +14,8 @@ import matplotlib.pyplot as plt
 ~~~
 - 그래프를 새 창이 아니라 노트북 셀 안에 바로 출력<br>
 <br>
-<columns>
+[columns:21] [rows:114000]
+
 | 컬럼명 | 의미 |
 |------|------|
 | popularity | Spotify 인기도 점수 (0~100) | 
@@ -39,4 +40,25 @@ import matplotlib.pyplot as plt
 ~~~python
 data.drop(data.columns[0], axis=1, inplace=True)
 ~~~
--
+- 첫번째 컬럼을 열(axis=1)기준으로 삭제, 원본데이터 직접 수정(inplace=True)
+* 이 경우에는 index를 삭제한듯
+~~~python
+data.describe()
+~~~
+- 수치형 컬럼들의 통계를 요약
+<img width="65" height="255" alt="image" src="https://github.com/user-attachments/assets/49a7a125-a6c7-4fd0-a449-bba7db5be758" />
+
+*여기서 확인하면 좋을 것
+1) 평균 값
+2) 수치형 컬럼들의 각 범위
+3) 이상치 존재 여부
+
+
+
+
+
+
+
+
+
+
