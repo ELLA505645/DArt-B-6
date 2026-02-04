@@ -70,10 +70,35 @@ data.popularity.max()
   
 ## 2. 데이터 EDA
 
+[EDA 순서]
+1. Missing Values - 결측치 확인
+2. Duplicate values - 중복값 확인
+3. All the numerical variables - 수치형 변수 확인
+4. Distribution of the numerical variables: Check the skewness of the features. - 수치형 변수 분포 확인(치우침 skewness 확인)
+5. Categorical variables -  범주형 변수 확인
+6. Cardinality of Categorical variables - 범주형 변수 카테고리 수 확인 
+7. Outliers - 이상치 확인
+8. Relationship between independent and dependent features - 독립변수와 종속변수의 상관관계 분석
 
+* EDA 방식, 순서 잘 익혀놓기!!
 
+~~~python
+features_with_nan=[feature for feature in data.columns if data[feature].isna().sum()>0]
+features_with_nan
+~~~
+- 결측치가 하나라도 있는 컬럼 골라서 새리스트로 저장하기
+~~~python
+data = data.dropna()
+~~~
+> 확인 결과: 결측치가 세가지 칼럼에 각 하나씩밖에 없어서 drop하는걸로 결정!
+*결측치 수도 전체에 비해 매우 적어서 맞는 판단이라고 생각함.
+~~~python
+data=data.drop_duplicates()
+~~~
+- 중복값도 걸러줌
+- 114000row에서 113549로 줄어듦!
 
-
+  
 
 
 
