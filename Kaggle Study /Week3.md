@@ -157,9 +157,25 @@ for feature in feature_discrete_numerical:
 ~~~python
 features_continuous_numerical=[features for features in feature_numerical if features not in feature_discrete_numerical]
 ~~~
-- feature_numerical 이면서 feature_discrete_numerical가 아닌 변수
+- feature_numerical 이면서 이산형(feature_discrete_numerical)이 아닌 변수
 -> 연속형 수치형 변수만 골라서 추출할 수 있음
 
 > ['popularity', 'duration_ms', 'danceability', 'energy', 'loudness', 'speechiness',
  'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'] 칼럼 추출
   
+~~~python
+from scipy.stats import skew
+
+for feature in features_continuous_numerical:
+    dataset = data.copy()
+    print(feature, 'skewness is :', skew(dataset[feature]))
+    sns.histplot(x=feature, data=dataset, bins=25, kde=True)
+    plt.show()
+~~~
+- skew(dataset[feature])) : 분포의 비대칭 정도를 숫자로 계산
+*bins= 막대그래프의 개수, kde=True 곡선 표시
+
+
+
+
+
