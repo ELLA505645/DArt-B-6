@@ -38,6 +38,8 @@ import matplotlib.pyplot as plt
 | key | 곡의 조성 | 
 | mode | 장조/단조 | 
 | time_signature | 박자 구조 |
+
+*explicit이 True면 청소년 유해 콘텐츠(19세), 스포티파이에서 E마크가 붙는다고 함
 ~~~python
 data.drop(data.columns[0], axis=1, inplace=True)
 ~~~
@@ -121,14 +123,43 @@ nunique()
 - 서로 다른 값의 개수
 > nunique < 50
 - 서로 다른 값의 개수가 50개 미만인 것 골라내기
-
 ~~~
 ❓ 왜 기준이 50개일까?
-gpt 답변: 
+gpt 답변: 보통 EDA에서 사용하는 경험적, 일반적 기준이라고함
+~~~
+> ['explicit', 'key', 'mode', 'time_signature'] : 이산형 컬럼 4가지가 추출됨
 
+### 비연속형 수치형 변수 - popularity 관계 분석
 
+~~~python
+for feature in feature_discrete_numerical:
+    dataset = data.copy()
+    sns.barplot(
+        x=feature,
+        y=dataset['popularity'],
+        data=dataset,
+        estimator=np.median
+    )
+    plt.show()
+~~~
+- 위에서 추출한 이산형 컬럼 4가지를 x축으로, popularity를 y축으로 설정
+-  estimator=np.median: 중앙값을 사용 -> 이상치 영향을 최대한 줄이고, 범주별로 대표적인 인기 수준을 보는 그래프 
+<img width="706" height="533" alt="image" src="https://github.com/user-attachments/assets/195f1483-ba6e-4a83-9e9d-58c14c119398" />
+<img width="715" height="537" alt="image" src="https://github.com/user-attachments/assets/d34f8193-b023-4321-b3de-7134d9c7da66" />
 
+> 해석방법:
+각 x 항목에 포함되는 곡들이 얼만큼의 popularity를 가장 보편적으로 나타내고 있는가
 
+-> 이 그래프를 보고 차이가 많이 나는 함수는 나중에 모델에 넣을 수 있음
 
+### 연속형 수치형 변수 - popularity 관계 분석
 
+~~~python
+features_continuous_numerical=[features for features in feature_numerical if features not in feature_discrete_numerical]
+~~~
+- feature_numerical 이면서 feature_discrete_numerical가 아닌 변수
+-> 연속형 수치형 변수만 골라서 추출할 수 있음
 
+> ['popularity', 'duration_ms', 'danceability', 'energy', 'loudness', 'speechiness',
+ 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'] 칼럼 추출
+  
