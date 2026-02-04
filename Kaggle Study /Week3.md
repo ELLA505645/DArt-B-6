@@ -96,9 +96,39 @@ data = data.dropna()
 data=data.drop_duplicates()
 ~~~
 - 중복값도 걸러줌
-- 114000row에서 113549로 줄어듦!
+- row가 114000에서 113549로 줄어듦!
 
-  
+### 수치형 변수
+~~~python
+feature_numerical=[feature for feature in data.columns if data[feature].dtype!='O']
+~~~
+- dtype = 'O'(알파벳 대문자) -> 문자형(str)
+- dtype != 'O' -> 숫자형을 지칭 (int, float, bool(이진변수) 포함)
+~~~python
+len(feature_numerical)
+~~~
+- length를 나타냄 -> feature_numerical이 몇개인지 셀 수 있음
+~~~python
+feature_discrete_numerical=[feature for feature in feature_numerical if data[feature].nunique()<50]
+~~~
+- ⭐️ 숫자형 컬럼 중에서 연속형말고, 이산형(discrete)을 보겠다는 뜻
+-> 범주형 성격의 숫자(숫자에 의미가 있는게 아니라 숫자로 category 분류를 해놓은 컬럼들을
+  골라내서 보겠다
+
+~~~python
+nunique()
+~~~
+- 서로 다른 값의 개수
+> nunique < 50
+- 서로 다른 값의 개수가 50개 미만인 것 골라내기
+
+~~~
+❓ 왜 기준이 50개일까?
+gpt 답변: 
+
+
+
+
 
 
 
