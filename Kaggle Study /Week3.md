@@ -1,4 +1,5 @@
-Spotify에서 인기있는 노래는 무엇일까? 예측해보기!
+Spotify 데이터로 인기도를 결정하는 요소를 분석해서,
+새로운 노래의 인기도를 예측해보자!
 
 
 # 1️⃣ 분석 흐름 따라잡기
@@ -53,7 +54,21 @@ data.describe()
 2) 수치형 컬럼들의 각 범위
 3) 이상치 존재 여부
 
+~~~python
+data.info()
+~~~
+- Dtype이 bool은 자료형 이름
+- bool -> 값이 딱 두개뿐인 자료형 (ex. True/False) (이진변수를 말하는듯)
 
+~~~python
+data.popularity.min()
+data.popularity.max()
+~~~
+- 예측 목표인 popularity의 범위와 대략적인 분포값을 확인
+- min이 0이고, max가 100이니까 -> 연속적인 분포겠다 -> 회귀모델을 적용해야겠다! 고 생각할 수 있음.
+
+  
+## 2. 데이터 EDA
 
 
 
