@@ -301,6 +301,42 @@ dataset_expo[feature] = dataset_expo[feature] ** (1/5)
 - dataset_sqrt보다 더 강하게 압축
 *강한 skew일때 사용
 
+### (2) skewness 처리 - 변환 방법별 비교 (어떤 방식이 정규분포에 가장 가까워지는지)
+
+- skewness ≈ 0 → 정규분포에 가까움 (이상적)
+
+- |skewness| ≈ 0 → 정규분포에 가까움 (이상적)
+
+[Q-Q plot]
+*불러오는 도구는 probplot 으로 사
+
+<img width="865" height="263" alt="image" src="https://github.com/user-attachments/assets/4fe99b33-41af-4c51-8d04-745a78e96a00" />
+
+- 빨간 선: 이 데이터가 완벽한 정규분포라면 그려져야 할 기준선
+1) 점들이 빨간 선을 잘 따라갈 때: 정규분포에 가갑다
+2) 왼쪽이나 오른쪽에서 휘어진다: skewness 존재
+3) 계단처럼 뭉쳐있다 : 값이 특정 구간에 많이 몰려있음
+
+
+| 변수명 |  적용한 변환  |
+| ---------------- | -------- |
+| popularity        | 변환 없음               | 
+| danceability     | | 변환 없음               |
+| energy           | 변환 없음               | 
+| valence           | 변환 없음               | 
+| tempo            | 변환 없음               |
+| loudness         |  변환 없음               | 
+| duration_ms      |  1/5 power (x^(1/5)) | 
+| speechiness      |  1/5 power (x^(1/5)) | 
+| instrumentalness |  1/5 power (x^(1/5)) | 
+| liveness         | 1/5 power (x^(1/5)) | 
+| acousticness     |  제곱근 (x^(1/2))       | 
+
+> 구분기준에 따라 각 변수별로 적합한 변환방법 채택
+
+- 이후에 한번 더 히트맵을 그려서 변화사항을 확인한다
+
+### (3) Encoding the categorical columns
 
 
 
