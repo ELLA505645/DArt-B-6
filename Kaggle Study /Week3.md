@@ -484,10 +484,12 @@ residual: 실제값-예측값 간의 잔차를 나타냄. 중심이 0근처-> �
 x축: 실제 popularity
 y축: 모델에 예측한 popularity <br>
 <br>
-[좋은 모델]
+ [좋은 모델]
+ 
 <img width="714" height="390" alt="image" src="https://github.com/user-attachments/assets/ad36b769-0c6a-4b0d-bc8f-f8e95885a06f" />
 
-[안좋은 모델]
+ [안좋은 모델]
+ 
 <img width="706" height="407" alt="image" src="https://github.com/user-attachments/assets/fadf3cb9-8b43-4b2e-8b2b-6259b8580cff" />
 
 
@@ -522,7 +524,51 @@ ex. 같은 장르라도 아티스트에 따라 영향 다름 / danceability가 �
 -> 트리 모델이 유리 
 
 
+# 2️⃣ 분석 흐름 한번 더 정리
 
+1. 데이터 불러오기 및 확인하기
+   
+2. 데이터 EDA
+   
+   (1) 수치형 변수 확인
+   
+   (2) 비연속형 수치형 변수 - popularity 관계 분석
+   
+   (3) 연속형 수치형 변수 - popularity 관계 분석
+   
+   (4) 연속형 수치형 변수들간의 상관관계 확인
+   
+   (5) 연속형 수치형 변수들간의 이상치 확인
+   
+   (6) 범주형 변수 확인
+   
+   (7) track_genre(장르)와 popularity의 관계 시각화
+   
+3. Feature Engineering - 모델 적용 위한 데이터 가공 단계
+   
+   (1) speechiness 처리
+   
+   (2) skewness 처리
+   
+   (3) 범주형 컬럼 인코딩
+   
+   (4) Feature 스케일링
+   
+   (5) Feature selection
+   
+4. 모델링
+   
+   (1) 모델 성능 확인
+   
+   (2) 모델 채택
+
+   
+# 3️⃣ 느낀점
+뭔가 친숙한 데이터셋이라 재밌었던 것 같다!
+
+간단한 모델링이라서 그런지 방법이 정형화되어 있어서 학습하기 편리했다
+
+실제로 적용해보는 실습까지 하는 노트북도 공부해보고 싶음!
 
 
 
