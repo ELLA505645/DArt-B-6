@@ -309,7 +309,7 @@ dataset_expo[feature] = dataset_expo[feature] ** (1/5)
 - |skewness| ≈ 0 → 정규분포에 가까움 (이상적)
 
 [Q-Q plot]
-*불러오는 도구는 probplot 으로 사
+*불러오는 도구는 probplot 으로 사용
 
 <img width="865" height="263" alt="image" src="https://github.com/user-attachments/assets/4fe99b33-41af-4c51-8d04-745a78e96a00" />
 
