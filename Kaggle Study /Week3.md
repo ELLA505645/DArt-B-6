@@ -365,8 +365,8 @@ data.head()
 - BASE-10 진법으로 만들어준다
 ⭐️
 ~~~
-ex. 54928번째 고유값의 taylor swift를 표현해보자<br>
-<br>
+ex. 54928번째 고유값의 taylor swift를 표현해보자
+~~~
 
 *최댓값이 몇만. -> 총 다섯자리의 수
 -> 자릿수 컬럼이 
@@ -389,7 +389,7 @@ artists_0 / artists_1 / artists_2 / artists_3 / artists_4
 - BASEN
 범주 50,000개
 컬럼 5개 <-!!
-~~~
+
 
 ### 3-(4) Feature 스케일링
 
