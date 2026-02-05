@@ -250,7 +250,7 @@ plt.show()
 4) 변수 스케일을 같은 범위로 맞추기
 
 
-### (1) speechiness 처리
+### 3-(1) speechiness 처리
 - 원래 컬럼 의미는 '말소리의 비중'
 - 이 사람은 이 컬럼을 더 구체적으로 분석해서 음악/랩/말 위주 로 분류하고자 했음
 - 연속형 변수 -> 이산형(범주형) 변수로 변환
@@ -278,7 +278,7 @@ for i in data.speechiness:
 -> 그래도 꽤 의미있는 분류인 것 같다
 
 
-### (2) skewness 처리
+### 3-(2) skewness 처리
 
 - 연속형 수치형 변수들과 popularity의 관계를 더 정확하게 보기 위해서 4가지의
   정규분포 방식을 시도해준다
@@ -301,7 +301,7 @@ dataset_expo[feature] = dataset_expo[feature] ** (1/5)
 - dataset_sqrt보다 더 강하게 압축
 *강한 skew일때 사용
 
-### (2) skewness 처리 - 변환 방법별 비교 (어떤 방식이 정규분포에 가장 가까워지는지)
+### 3-(2) skewness 처리 - 변환 방법별 비교 (어떤 방식이 정규분포에 가장 가까워지는지)
 
 - skewness ≈ 0 → 정규분포에 가까움 (이상적)
 
@@ -336,7 +336,102 @@ dataset_expo[feature] = dataset_expo[feature] ** (1/5)
 
 - 이후에 한번 더 히트맵을 그려서 변화사항을 확인한다
 
-### (3) Encoding the categorical columns
+### 3-(3) 범주형 컬럼 인코딩
+
+*범주형 컬럼의 고유값(cardinality)가 너무 커서 원-핫 인코딩은 어려움
+
+> BaseN encoding
+- 범주를 N진법 기반 숫자로 변환
+- 고유값이 많은 변수에 적합한 인코딩 방법
+
+~~~python
+pip install category_encoders
+import category_encoders as ce
+~~~
+- category_encoders : 높은 cardinality 범주형 변수를 위한 라이브러리
+
+⭐️
+~~~python
+encoder1 = ce.BaseNEncoder(
+    cols=['track_genre','album_name', 'track_name','artists'],
+    base=10,
+    return_df=True
+)
+data = encoder1.fit_transform(data)
+data.head()
+~~~
+- BASE-10 진법으로 만들어준다
+⭐️
+~~~
+ex. 54928번째 고유값의 taylor swift를 표현해보자<br>
+<br>
+
+*최댓값이 몇만. -> 총 다섯자리의 수
+-> 자릿수 컬럼이 
+artists_0 / artists_1 / artists_2 / artists_3 / artists_4
+
+이렇게 생성됨 <br>
+<br>
+<img width="761" height="314" alt="image" src="https://github.com/user-attachments/assets/0120fc3e-5664-446e-a243-8be5c49bc66f" />
+
+표현해보면)
+
+| artists_0 | artists_1 | artists_2 | artists_3 | artists_4 |
+| --------- | --------- | --------- | --------- | --------- |
+| 8         | 2         | 9         | 4         | 5         | <br>
+<br>
+- one-hot 인코딩
+범주 50,000개
+컬럼 50,000개<br>
+<br>
+- BASEN
+범주 50,000개
+컬럼 5개 <-!!
+~~~
+
+### 3-(4) Feature 스케일링
+
+~~~python
+data['explicit'] = np.where(data['explicit']==False, 0, 1)
+~~~
+- 19세 (True / False) -> 0 / 1 로 변환
+
+~~~python
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+~~~
+- 지금까지 처리해준 변수들에 대해서 표준화를 진행해준다 (범위 맞춰주려고)
+
+- y변수인 'popularity'랑 이진변수인 'mode'는 스케일에서 제외
+
+❓
+근데 왜 이진변수인 explicit는 제외안할까?
+
+-> GPT한테 물어보니까 제외해주면 더 좋다고함.
+
+~~~python
+for feature in features_scaling:
+    data[feature] = data_to_replace[feature].values
+~~~
+- 원본 데이터에 스케일링 한 값 반영
+- 마지막으로 한번 더 결측치 체크
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
