@@ -1,4 +1,4 @@
-Spotify 데이터로 인기도를 결정하는 요소를 분석해서,
+<img width="694" height="330" alt="image" src="https://github.com/user-attachments/assets/5fa70d7a-6028-4af6-a5f4-38527c8ea22a" />Spotify 데이터로 인기도를 결정하는 요소를 분석해서,
 새로운 노래의 인기도를 예측해보자!
 
 
@@ -417,17 +417,107 @@ for feature in features_scaling:
 - 마지막으로 한번 더 결측치 체크
 
 
+### 3-(5) Feature selection
+
+~~~python
+X = data.drop(['popularity'], axis=1)
+y = data['popularity']
+X.head()
+~~~ 
+1) 타깃 분리 - y변수를 popularity로 두고 나머지 컬럼들은 모두 x로
+~~~python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=7
+)
+~~~ 
+2) train/test 분리 - 전체 데이터의 30%를 테스트로 사용
+* random_state=7 : 생성 방식 규칙을 7로 고정한다 (숫자는 크게 의미없고, 방식을 고정한다는 뜻)
+
+~~~python
+def correlation(dataset,threshold):
+    correlated_columns=set()
+    correlation_matrix=dataset.corr()
+    for i in range(len(correlation_matrix.columns)):
+        for j in range(i):
+            if abs(correlation_matrix.iloc[i,j])>threshold:
+                colname=correlation_matrix.columns[i]
+                correlated_columns.add(colname)
+    return correlated_columns
+~~~ 
+4) 상관 높은 변수 제거
+- dataset.corr() : 입력 변수들끼리의 상관계수 행렬 (X들 서로 간의 상관 파악)
+- 서로 너무 비슷해서 굳이 2번 넣을 필요없는 변수들을 찾아줌
+
+5) 학습용 데이터 재구성
+- 변동사항 train이랑 test 데이터 똑같이 반영
+- 최종적으로 결측값 있는지 확인
+
+
+## 4. 모델링
+
+*서로 다른 회귀 모델들을 비교
+~~~python
+from sklearn.linear_model import LinearRegression, Lasso, Ridge
+from xgboost import XGBRegressor, XGBRFRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import BayesianRidge
+~~~ 
+
+[해석방법]
+
+~~~python
+plt.subplot(1,2,1)
+plt.scatter(y_test,prediction)
+    
+plt.subplot(1,2,2)
+sns.distplot(residual, hist=False, kde=True)
+plt.show()
+~~~ 
+scatter: 점들이 y=x대각선 주변에 모여있을수록 예측이 정확하다는 뜻
+residual: 실제값-예측값 간의 잔차를 나타냄. 중심이 0근처-> 평균적으로 편향이 없음 / 한쪽으로 쏠림 -> 과대, 과소 예측
 
 
 
+x축: 실제 popularity
+y축: 모델에 예측한 popularity <br>
+<br>
+[좋은 모델]
+<img width="714" height="390" alt="image" src="https://github.com/user-attachments/assets/ad36b769-0c6a-4b0d-bc8f-f8e95885a06f" />
+
+[안좋은 모델]
+<img width="706" height="407" alt="image" src="https://github.com/user-attachments/assets/fadf3cb9-8b43-4b2e-8b2b-6259b8580cff" />
 
 
+## 4. 모델링 - 모델 성능 확인
 
+~~~python
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import r2_score
+~~~ 
+- 휘귀 모델에서 성능 확인할 때 쓰는 성능 지표들
 
+<img width="505" height="273" alt="image" src="https://github.com/user-attachments/assets/b9758734-d43a-4191-a950-065a92935337" />
 
+[봐야하는 순서]
+1) R² score (설명력) -> 클수록 좋다
+   
+2) MAE (ABMSE) (평균 오차 크기) -> 작을수록 좋다
 
+3) MSE (오차 제곱) -> 작을수록 좋다
+* 더 세밀하게 오차를 확인할 수 있다
 
+<img width="715" height="404" alt="image" src="https://github.com/user-attachments/assets/6cfed3b1-972e-4a49-8b30-9dd7f0bbbf83" />
 
+-> XGBOOST가 제일 성능이 좋음!!!<br>
+<br>
+
+**⭐️ 이렇게 결과가 나온 이유**
+
+popularity를 결정하는 요인은 굉장히 조건적이고, 비선형적이다.
+ex. 같은 장르라도 아티스트에 따라 영향 다름 / danceability가 높아도 energy가 낮으면 인기 없음
+
+-> 트리 모델이 유리 
 
 
 
