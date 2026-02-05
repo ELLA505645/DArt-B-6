@@ -1,4 +1,4 @@
-<img width="694" height="330" alt="image" src="https://github.com/user-attachments/assets/5fa70d7a-6028-4af6-a5f4-38527c8ea22a" />Spotify 데이터로 인기도를 결정하는 요소를 분석해서,
+Spotify 데이터로 인기도를 결정하는 요소를 분석해서,
 새로운 노래의 인기도를 예측해보자!
 
 
