@@ -184,7 +184,8 @@ for feature in features_continuous_numerical:
 *이런 유형처럼 치우쳐있는 분포는 로그변환, 제곱근 변환 등의 수치변환을 해줄 수 있음.
 
 <img width="733" height="537" alt="image" src="https://github.com/user-attachments/assets/28aeead9-8857-4e83-8584-a75fda521840" />
->정규분포 모양 -> 선형회귀 등에 적합하다
+
+> 정규분포 모양 -> 선형회귀 등에 적합하다
 
 ### 연속형 수치형 변수들간의 상관관계 확인
 
