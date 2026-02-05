@@ -175,7 +175,57 @@ for feature in features_continuous_numerical:
 - skew(dataset[feature])) : 분포의 비대칭 정도를 숫자로 계산
 *bins= 막대그래프의 개수, kde=True 곡선 표시
 
+<img width="709" height="536" alt="image" src="https://github.com/user-attachments/assets/27fca901-ab43-4c57-ab72-56b0b323ecf4" />
 
+> 음향 데이터에는 표준 음량대 (보편적인 범위)가 존재해서 loudness가 0아래에 거의 몰려있음.
+
+<img width="720" height="524" alt="image" src="https://github.com/user-attachments/assets/623bd30c-e148-48ae-a723-8c8ccb121d58" />
+
+>예:acousticness -> 오른쪽으로 치우친 분포
+*대부분 값이 작고 일부만 큰 값을 가짐
+*이런 유형처럼 치우쳐있는 분포는 로그변환, 제곱근 변환 등의 수치변환을 해줄 수 있음.
+
+<img width="733" height="537" alt="image" src="https://github.com/user-attachments/assets/28aeead9-8857-4e83-8584-a75fda521840" />
+>정규분포 모양 -> 선형회귀 등에 적합하다
+
+### 연속형 수치형 변수들간의 상관관계 확인
+
+- 히트맵 활용
+-> 변수들끼리 서로 얼마나 비슷하게 움직이냐
+  
+1) 변수 간 중복 정보 확인 (상관계수가 너무 높으면 둘 중 하나만 써도 됨)
+2) 모델 안정성 (다중공선성 방지)
+
+-> 어떤 연속형 수치형 변수들을 사용할지 골라내는 과정
+
+### 연속형 수치형 변수들간의 이상치 확인
+
+- boxplot 확인
+<img width="709" height="528" alt="image" src="https://github.com/user-attachments/assets/f7f74a6e-932a-4526-9a72-f428be94c36a" />
+
+이런식의 이상치가 많은 그래프가 많이 나옴
+but, 오디오 데이터 특성 자체가 한쪽에 몰리고 극단값이 소수로 존재하는 구조임
+-> 당연한 그래프 모양이기 때문에 여기서는 별도의 처리 진행X -> 신중하게 판단
+
+### 범주형 변수
+
+~~~python
+feature_categorical=[feature for feature in data.columns if data[feature].dtypes=='O']
+print('Number of categorical features:', len(feature_categorical))
+data[feature_categorical].head()
+~~~
+- dtypes=='O' : 문자열 기반 컬럼들만 지칭
+- 'Number of categorical features: 5' 결과 추출 -> 범주형 변수는 5개
+
+~~~python
+for feature in feature_categorical:
+    dataset=data.copy()
+    print(feature, ': Number of unique entries:', dataset[feature].nunique())
+~~~
+- Number of unique entries : 서로 다른 고유한 값이 몇개인지 추출
+<img width="494" height="160" alt="image" src="https://github.com/user-attachments/assets/b96b562e-fb8e-43a3-9b0d-58e9d38b9559" />
+
+- 대부분 몇만개의 고유값을 가짐
 
 
 
