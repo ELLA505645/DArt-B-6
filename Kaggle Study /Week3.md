@@ -202,10 +202,10 @@ for feature in features_continuous_numerical:
 <img width="709" height="528" alt="image" src="https://github.com/user-attachments/assets/f7f74a6e-932a-4526-9a72-f428be94c36a" />
 
 이런식의 이상치가 많은 그래프가 많이 나옴
-but, 오디오 데이터 특성 자체가 한쪽에 몰리고 극단값이 소수로 존재하는 구조임
-
--> 당연한 그래프 모양이기 때문에 여기서는 별도의 처리 진행X 
-
+but, 오디오 데이터 특성 자체가 한쪽에 몰리고 극단값이 소수로 존재하는 구조임<br>
+<br>
+-> 당연한 그래프 모양이기 때문에 여기서는 별도의 처리 진행X <br>
+<br>
 -> 신중하게 판단
 
 ### 범주형 변수
