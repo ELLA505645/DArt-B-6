@@ -226,6 +226,81 @@ for feature in feature_categorical:
 <img width="494" height="160" alt="image" src="https://github.com/user-attachments/assets/b96b562e-fb8e-43a3-9b0d-58e9d38b9559" />
 
 - 대부분 몇만개의 고유값을 가짐
+- track_genre -> 범주 개수가 114개로, 그룹별로 특성을 파악할 수 있을 것 같이 보인다!
+
+
+### track_genre(장르)와 popularity의 관계 시각화
+
+~~~python
+dataset=data.copy()
+plt.figure(figsize=(16,12))
+sns.lineplot(x='track_genre', y='popularity', data=dataset)
+plt.xticks(rotation=90)
+plt.show()
+~~~
+- plt.xticks(rotation=90) : x축의 글자를 90도 회전시켜서 가독성을 좋게 만듦
+*x변수가 너무 많을 때 사용하면 좋을듯
+
+## 3. Feature Engineering - 모델 적용 위한 데이터 가공 단계
+
+[데이터들을 모델에 적용할 수 있도록 처리]
+1) speechiness의 의미를 더 분명하게 변환
+2) 연속형 변수의 skewness(치우침) 정도를 완화
+3) 범주형 변수를 숫자로 변환
+4) 변수 스케일을 같은 범위로 맞추기
+
+
+### (1) speechiness 처리
+- 원래 컬럼 의미는 '말소리의 비중'
+- 이 사람은 이 컬럼을 더 구체적으로 분석해서 음악/랩/말 위주 로 분류하고자 했음
+- 연속형 변수 -> 이산형(범주형) 변수로 변환
+
+~~~python
+speechiness_type=[]
+for i in data.speechiness:
+    if i<0.33:
+        speechiness_type.append('Low')
+    elif 0.33<=i<=0.66:
+        speechiness_type.append('Medium')
+    else:
+        speechiness_type.append('High')
+
+~~~
+- speechiness_type 라는 파생변수를 따로 만들어줌 (분류 수치는 spotify의 공식 설명 활용)
+- 범위에 따라 라벨링을 해줌
+
+| 라벨명 | 수치 |
+|------|------|
+| Low | 109947 | 
+| Medium | 2726 | 
+| High |  876 | 
+
+-> 그래도 꽤 의미있는 분류인 것 같다
+
+
+### (2) skewness 처리
+
+- 연속형 수치형 변수들과 popularity의 관계를 더 정확하게 보기 위해서 4가지의
+  정규분포 방식을 시도해준다
+~~~python
+dataset_log[feature] = np.log(dataset_log[feature] + 1)
+~~~
+- 오른쪽 꼬리를 줄여주는 방식
+~~~python
+dataset_reci[feature] = 1 / (dataset_reci[feature] + 1)
+~~~
+- 큰 값 압축, 작은 값을 강조해줌
+*분포를 뒤집는 경우도 있다
+~~~python
+dataset_sqrt[feature] = dataset_sqrt[feature] ** (1/2)
+~~~
+- 완만한 왜도를 완화
+~~~python
+dataset_expo[feature] = dataset_expo[feature] ** (1/5)
+~~~
+- dataset_sqrt보다 더 강하게 압축
+*강한 skew일때 사용
+
 
 
 
