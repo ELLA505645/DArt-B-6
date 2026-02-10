@@ -63,3 +63,41 @@ df = df[(df.dropoff_latitude> ylim[0]) & (df.dropoff_latitude < ylim[1])]
 
 
 ### 승하차 위치 지도 위에 시각화
+
+~~~python
+longitude = list(df.pickup_longitude) + list(df.dropoff_longitude)
+latitude = list(df.pickup_latitude) + list(df.dropoff_latitude)
+~~~
+- 1) 승차 경도와 하차 경도를 하나의 리스트로 합침
+  2) 승차 위도와 하차 위도를 하나의 리스트로 합침
+
+~~~python
+plt.plot(longitude, latitude, '.', alpha = 0.4, markersize = 0.05)
+~~~
+- 경도, 위도를 '.'으로 표시
+- alpha = 0.4 -> 점을 0.4만큼 투명하게 한다는 뜻 (밀집도를 더 잘 볼 수 있게)
+- markersize = 0.05 -> 점을 엄청 작게 찍어서 겹쳐도 잘 구분할 수 있게 <br>
+<br>
+
+> **❓ 승차 경도랑 승차 위도, 하차 경도랑 하차 위도로 각각 리스트화 하면 안될까?**
+~~~
+plt.plot(longitude,latitude)
+이기 때문에 
+
+(longitude[0], latitude[0])  → pickup 1
+(longitude[1], latitude[1])  → pickup 2
+...
+(longitude[n], latitude[n])  → dropoff 1
+(longitude[n+1], latitude[n+1]) → dropoff 2
+
+이렇게 앞부분은 앞부분끼리, 뒷부분은 뒷부분끼리 자동으로 짝이 맞아짐
+~~~
+<img width="731" height="668" alt="image" src="https://github.com/user-attachments/assets/87685cd9-8e8b-4e2f-b806-d96657d487eb" />
+
+1️⃣ 점 하나 = 택시 승차 or 하차 위치 하나
+
+2️⃣ 점이 진하게 겹친 곳 = 택시 활동이 많은 지역
+
+3️⃣ 클러스터링을 할 수 있는 느낌이 온다
+
+
