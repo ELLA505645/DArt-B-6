@@ -100,4 +100,52 @@ plt.plot(longitude,latitude)
 
 3️⃣ 클러스터링을 할 수 있는 느낌이 온다
 
+~~~python
+loc_df['longitude'] = longitude
+loc_df['latitude'] = latitude
+kmeans = KMeans(n_clusters=15, random_state=2, n_init=10).fit(loc_df)
+~~~
+- n_clusters = 15 -> 구역을 15개로 쪼갠다
+- random_state=2 -> 방식을 숫자하나(2)로 고정시켜서 동일한 결과값이 나오도록 한다
+- n_init=10 -> 초기 중심점을 10번 다르게 해서 그중에서 가장 좋은 결과를 선택
+*10이 보통 자주 사용하는 값이라고 함
+
+~~~python
+loc_df['label'] = kmeans.labels_
+~~~
+- 각점이 어느 클러스터에 속했는지 저장 -> 각 점마다 구역번호가 붙게 됨.
+
+~~~python
+loc_df = loc_df.sample(200000)
+plt.figure(figsize = (10,10))
+for label in loc_df.label.unique():
+plt.plot(loc_df.longitude[loc_df.label == label],loc_df.latitude[loc_df.label == label],'.', alpha = 0.3, markersize = 0.3)
+~~~
+- 점이 너무 많아서 200000개만 뽑아서 진행
+- 각 클러스터 구역별로 plt 시각화를 진행한다
+*색상을 별도로 지정하지 않아도 여러번 plot을 호출하면 자동으로 색을 순서대로 바꿔준다
+
+<img width="703" height="675" alt="image" src="https://github.com/user-attachments/assets/c23c5c17-925f-49d9-be75-88796c71d5b2" />
+
+> 클러스터링 결과가 실제 뉴욕의 지역 구분과 비슷하게 나타남
+
+~~~python
+ax.plot(kmeans.cluster_centers_[label,0],kmeans.cluster_centers_[label,1],'o', color = 'r')
+~~~
+- kmeans.cluster_centers : 클러스터의 평균을 자동으로 계산함
+- kmeans.cluster_centers_[label,0] -> 해당하는 클러스터 라벨의 0번째(longitude) 변수들의 평균
+- kmeans.cluster_centers_[label,1] -> 해당하는 클러스터 라벨의 1번째(latitude) 변수들의 평균
+
+~~~python
+ax.annotate(label, (kmeans.cluster_centers_[label,0],kmeans.cluster_centers_[label,1]), color = 'b', fontsize = 20)
+ax.set_title('Cluster Centers')
+plt.show()
+~~~
+- annotate() : 그래프 위에 텍스트를 특정 좌표에 붙이는 함수
+- ax.annotate(label, (x, y)) : (x,y) 위치에 label이라는 글자를 써라
+<img width="702" height="676" alt="image" src="https://github.com/user-attachments/assets/c8761ee6-1bac-4fed-8c93-5bcbfed5795e" />
+
+
+
+
 
