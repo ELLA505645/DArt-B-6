@@ -1,4 +1,5 @@
-하루 시간대별로 택시 이동(유입/유출)이 어떻게 달라질까?
+
+🚕하루 시간대별로 택시 이동(유입/유출)이 어떻게 달라질까?🚖
 - 
 NYC를 위치 기반으로 몇 개의 구역으로 나누 뒤, 시간대별로 각 구역에 들어오고 나가는 택시 수를 파악하자
 
@@ -68,8 +69,8 @@ df = df[(df.dropoff_latitude> ylim[0]) & (df.dropoff_latitude < ylim[1])]
 longitude = list(df.pickup_longitude) + list(df.dropoff_longitude)
 latitude = list(df.pickup_latitude) + list(df.dropoff_latitude)
 ~~~
-- 1) 승차 경도와 하차 경도를 하나의 리스트로 합침
-  2) 승차 위도와 하차 위도를 하나의 리스트로 합침
+1) 승차 경도와 하차 경도를 하나의 리스트로 합침
+2) 승차 위도와 하차 위도를 하나의 리스트로 합침
 
 ~~~python
 plt.plot(longitude, latitude, '.', alpha = 0.4, markersize = 0.05)
@@ -108,7 +109,8 @@ kmeans = KMeans(n_clusters=15, random_state=2, n_init=10).fit(loc_df)
 - n_clusters = 15 -> 구역을 15개로 쪼갠다
 - random_state=2 -> 방식을 숫자하나(2)로 고정시켜서 동일한 결과값이 나오도록 한다
 - n_init=10 -> 초기 중심점을 10번 다르게 해서 그중에서 가장 좋은 결과를 선택
-*10이 보통 자주 사용하는 값이라고 함
+  
+**10이 보통 자주 사용하는 값이라고 함*
 
 ~~~python
 loc_df['label'] = kmeans.labels_
@@ -123,7 +125,8 @@ plt.plot(loc_df.longitude[loc_df.label == label],loc_df.latitude[loc_df.label ==
 ~~~
 - 점이 너무 많아서 200000개만 뽑아서 진행
 - 각 클러스터 구역별로 plt 시각화를 진행한다
-*색상을 별도로 지정하지 않아도 여러번 plot을 호출하면 자동으로 색을 순서대로 바꿔준다
+  
+**색상을 별도로 지정하지 않아도 여러번 plot을 호출하면 자동으로 색을 순서대로 바꿔준다*
 
 <img width="703" height="675" alt="image" src="https://github.com/user-attachments/assets/c23c5c17-925f-49d9-be75-88796c71d5b2" />
 
@@ -154,7 +157,9 @@ df['pickup_cluster'] = kmeans.predict(df[['pickup_longitude','pickup_latitude']]
 ~~~python
 df['dropoff_cluster'] = kmeans.predict(df[['dropoff_longitude','dropoff_latitude']])
 ~~~
-- 각 하차 위치가 어느 클러스터 구역에 속하는지 예측하고 판단 -> dropoff_cluster에 저장
+- 각 하차 위치가 어느 클러스터 구역에 속하는지 예측하고 판단
+
+-> dropoff_cluster에 저장
 
 ~~~python
 df['pickup_hour'] = df.pickup_datetime.apply(lambda x: parser.parse(x).hour )
@@ -247,8 +252,11 @@ arr = Arrow(start_x, start_y, -dist_x, -dist_y, width=15*pct)
 ~~~
 - 벡터함수 /  start_x, start_y 에서 -dist_x, -dist_y 방향으로 화살표 생성
 - dist_x : 출발 - 도착 -> -dist_x : 도착- 출발
+  
   ex) 출발 = (1,1) / 도착 = (4,5)
+  
   dx = 4 - 1 = 3, dy = 5 - 1 = 4
+  
   -> Arrow(1,1,3,4)
 
 ~~~python
@@ -277,6 +285,109 @@ ani.save('animation.gif', writer='imagemagick', fps=2)
 1️⃣ 각 시간대별로 출발 구역 -> 도착 구역 이동을 나타냄
 
 2️⃣ 이동량이 많을수록 화살표가 두꺼움
+
+### 택시 이동 양상 지도 위에 시각화 - (2) 시간대별 가중치 적용 이동 흐름 애니메이션
+
+~~~python
+pct = np.true_divide(num_of_rides, len(df[df.pickup_hour == hour]))
+~~~
+- 위의 애니메이션은 전체 시간을 기준으로 흐름을 나타낸 것임.
+- 이번 애니메이션은 hour을 기준으로 그 시간대에서 가장 특징적인 흐름을 파악할 수 있다.
+- 
+  ex)
+  
+  <img width="391" height="657" alt="image" src="https://github.com/user-attachments/assets/8e0bc059-bbb0-4a5d-bc5a-f75658327373" />
+
+
+<img width="614" height="593" alt="image" src="https://github.com/user-attachments/assets/9b6baa82-574c-45a2-9579-94ff25ac8f4a" />
+
+1️⃣ 아침 시간대는 택시 이동 대부분이 맨해튼 섬 내부에서 발생
+
+2️⃣ 늦은 저녁이 되면 브루클린 지역, 특히 윌리엄스버그 쪽으로 이동하는 택시의 비중이 훨씬 커짐
+
+
+### 택시 이동 양상 그래프로 시각화
+
+(동네에 이름붙여주고, 히트맵 그려봤는데 동네별 이동량이 크게 격차가 안나서 생략할게요)
+
+~~~python
+rides_df
+~~~
+
+| From \ To | Chelsea | Queens | JFK | ... |
+| --------- | ------- | ------ | --- | --- |
+| Chelsea   | 1200    | 300    | 50  | ... |
+| Queens    | 200     | 800    | 70  | ... |
+| JFK       | 40      | 60     | 500 | ... |
+
+~~~python
+fig, ax = plt.subplots(figsize = (12,12))
+
+for i in range(len(rides_df)):  
+ax.plot(rides_df.sum(axis = 1)[i], rides_df.sum(axis = 0)[i], 'o', color = 'b')
+~~~
+- 산점도 캔버스 생성
+- rides_df.sum(axis = 1)[i] : i 동네에서 출발해서 다른 동네로 간 총량 -> x축
+- rides_df.sum(axis = 0)[i] : 다른 동네에서 i동네로 들어온 총량 -> y축
+
+~~~python
+ax.plot([0,250000],[0,250000], color = 'r', linewidth = 1)
+~~~
+- 유입 = 유출이 같은 지점이 되는 기준선을 생성
+
+<img width="700" height="657" alt="image" src="https://github.com/user-attachments/assets/afe263ce-d93b-4a31-9b1c-897a3878e820" />
+
+
+1️⃣ 선 위쪽에 있는 동네는 유입>유출 (들어오는 택시가 더 많다)
+
+2️⃣ 선 아래쪽에 있는 동네는 유출>유입 (나가는 택시가 더 많다)
+
+3️⃣ 퀸즈, 브루클린, 할렘 같은 주거 지역은 유입이 많고 / 상업 관광 성격의 지역은 유출이 더 많다 / 두개의 공항은 보통 택시들이 줄을 서서 승객을 태워서 나오는게 흔하기 때문에 유출이 더 많다
+
+
+### 택시 이동 양상 그래프로 시각화 - 계절별 패턴 분석
+
+~~~python
+df['pickup_month'] = df.pickup_datetime.apply(lambda x: parser.parse(x).month)
+~~~
+- pickup_datetime에서 month 만 뽑아서 pickup_month 칼럼으로 저장
+
+[6월 vs 1월 비교]
+
+~~~python
+for col in rides_df.columns[:-1]:
+    rides_df[col] = rides_df.name.apply(
+        lambda x: len(df[(df.pickup_neighborhood == x) &
+                         (df.dropoff_neighborhood == col) &
+                         (df.pickup_month == 6)])
+    )
+~~~
+- df.pickup_neighborhood == x -> 출발 동네(x)랑 df.dropoff_neighborhood == col -> 도착 동네(y)
+  의 건수 반복해서 카운트
+- df.pickup_month == 6 -> 6월의 이동 건수
+
+* 나머지 모든 과정은 위에서 한 과정 반복
+* 1월도 똑같이 반복
+<img width="706" height="650" alt="image" src="https://github.com/user-attachments/assets/17c724a8-0d9f-4bc9-a40b-c43be0535e87" />
+
+
+-> 전혀 큰 차이 없음..
+
+
+
+# 2️⃣ 느낀점
+
+지도 시각화 방법을 꼭 공부해보고 싶었는데 방식을 알게 되어서 좋았다
+
+인사이트를 뽑아낸다기보다는, 그 초석을 마련해주는 분석까지인 것 같은데 이런걸 활용해서
+더 깊은 분석과 인사이트를 뽑아내는 노트북도 공부해보고 싶다.
+
+코드가 낯선게 많아서 어려웠다!! 시계열 시각화라 그런가..
+
+
+
+
+
 
 
 
