@@ -145,7 +145,138 @@ plt.show()
 - ax.annotate(label, (x, y)) : (x,y) 위치에 label이라는 글자를 써라
 <img width="702" height="676" alt="image" src="https://github.com/user-attachments/assets/c8761ee6-1bac-4fed-8c93-5bcbfed5795e" />
 
+### 택시 이동 양상 지도 위에 시각화 - (1) 중심점 찍어주기
+~~~python
+df['pickup_cluster'] = kmeans.predict(df[['pickup_longitude','pickup_latitude']])
+~~~
+- 각 승차 위치가 어느 클러스터 구역에 속하는지 예측하고 판단 -> pickup_cluster에 저장
 
+~~~python
+df['dropoff_cluster'] = kmeans.predict(df[['dropoff_longitude','dropoff_latitude']])
+~~~
+- 각 하차 위치가 어느 클러스터 구역에 속하는지 예측하고 판단 -> dropoff_cluster에 저장
+
+~~~python
+df['pickup_hour'] = df.pickup_datetime.apply(lambda x: parser.parse(x).hour )
+~~~
+- parser.parse(x) : 문자열인 pickup_datetime을 datetime형태로 변환
+- .hour : 시(hour)만 추출
+- pickup_hour 라는 새로운 칼럼으로 저장
+
+
+> **❓왜 출발시간만 처리하고 도착시간은 처리를 안할까?**
+~~~
+이 노트북의 분석 목적은 수요 발생 시점 기준으로, 시간대별 수요 분석 / 출발 지역별 혼잡 분석
+을 알아보는거라서 pickup시간 중심으로 본다
+~~~
+
+~~~python
+clusters['x'] = kmeans.cluster_centers_[:,0]
+clusters['y'] = kmeans.cluster_centers_[:,1]
+clusters['label'] = range(len(clusters))
+~~~
+- [:,0] -> :(모든 행), 0(0번째 열)
+- [:,1] -> :(모든 행), 1(1번째 열)
+- 모든 클러스터의 위도와 경도의 평균을 가지고 온 것
+
+~~~python
+clusters['label'] = range(len(clusters))
+~~~
+- 클러스터 번호를 붙여줌 (0~14)
+- 클러스터의 len 길이(개수)에 맞게 번호를 붙여서 'label'로 정의해줌
+
+예시)
+
+| x (경도) | y (위도) | label |
+| ------ | ------ | ----- |
+| -73.98 | 40.75  | 0     |
+| -73.99 | 40.76  | 1     |
+| ...    | ...    | ...   |
+
+
+### 택시 이동 양상 지도 위에 시각화 - (2) 시간대별 이동 흐름 애니메이션
+
+~~~python
+def animate(hour):
+~~~
+- 특정 시간에 대한 프레임 설정. 애니메이션은 이 함수를 시간대별로 반복 실행 
+
+~~~python
+ax.plot(loc_df.longitude[loc_df.label == label],
+loc_df.latitude[loc_df.label == label],
+'.', alpha = 1, markersize = 2, color = 'gray');
+~~~
+- 배경으로 모든 점을 gray 컬러로 찍어준다
+
+~~~python
+ax.plot(kmeans.cluster_centers_[label,0],
+kmeans.cluster_centers_[label,1],
+'o', color = 'r');
+~~~
+- 각 클러스터 중심을 빨간점으로 표시해준다
+
+
+[출발 클러스터, 도착 클러스터 정의]
+~~~python
+num_of_rides = len(
+    df[(df.pickup_cluster == label) &
+       (df.dropoff_cluster == dest_label) &
+       (df.pickup_hour == hour)]
+)
+~~~
+- pickup_cluster == label로
+- dropoff_cluster == dest_label
+- pickup_hour == hour 정의
+- num_of_rides = len() -> label → dest_label로 이동한 ride 개수
+
+~~~python
+dist_x = clusters.x[...] - clusters.x[...]
+dist_y = clusters.y[...] - clusters.y[...]
+~~~
+- 출발 -> 도착 x좌표 거리 차이 계산
+- 출발 -> 도착 y좌표 거리 차이 계산
+
+~~~python
+pct = np.true_divide(num_of_rides, len(df))
+~~~
+- 전체 ride 중 해당 이동이 차지하는 비율
+* 이동이 많을수록 선이 굵게 표시됨)
+
+~~~python
+arr = Arrow(start_x, start_y, -dist_x, -dist_y, width=15*pct)
+~~~
+- 벡터함수 /  start_x, start_y 에서 -dist_x, -dist_y 방향으로 화살표 생성
+- dist_x : 출발 - 도착 -> -dist_x : 도착- 출발
+  ex) 출발 = (1,1) / 도착 = (4,5)
+  dx = 4 - 1 = 3, dy = 5 - 1 = 4
+  -> Arrow(1,1,3,4)
+
+~~~python
+ax.add_patch(arr)
+~~~
+- 화살표를 그래프에 추가
+
+~~~python
+ani = animation.FuncAnimation(
+    fig,
+    animate,
+    sorted(df.pickup_hour.unique()),
+    interval = 1000
+)
+~~~
+- hour (0~23시) 순서대로 animate실행
+- 1000ms 단위 간격 -> 1초 간격으로 애니메이션 변
+
+~~~python
+ani.save('animation.gif', writer='imagemagick', fps=2)
+~~~
+- GIF 파일로 저장
+- fps=2 -> 초당 2프레임
+<img width="636" height="601" alt="image" src="https://github.com/user-attachments/assets/f1de7210-25f4-4e7a-bb33-da7687ed2ca7" />
+
+1️⃣ 각 시간대별로 출발 구역 -> 도착 구역 이동을 나타냄
+
+2️⃣ 이동량이 많을수록 화살표가 두꺼움
 
 
 
