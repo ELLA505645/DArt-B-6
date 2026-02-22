@@ -154,6 +154,10 @@ param_grids = {
 - n_neighbors: 몇명의 이웃을 보고 투표할지 결정 -> 작으면 민감하고 크면 안정적임(but 둔해질 수 있다)
 - uniform은 모든 이웃을 똑같이 1표로, distance는 가까운 이웃일수록 더 큰 영향력을 준다
 
+*이웃: 데이터들 중에 이 데이터랑 가장 비슷한 것
+
+*가까운 이웃: 유사도가 높은 데이터 
+
 ~~~python
 'Decision Tree': {
 'max_depth': [10, 20, None],
@@ -176,6 +180,8 @@ for name, model in models.items():
 - model 딕셔너리를 돌면서 하나씩 꺼내서 반복
 
 ### 모델 학습
+각 모델별로 모든 조합을 반복적으로 돌려본다
+
 ~~~python
 grid_search = GridSearchCV(model, param_grids[name], cv=5, scoring='accuracy', n_jobs=-1)
 grid_search.fit(X_train_scaled, y_train)
@@ -209,7 +215,7 @@ print(confusion_matrix(y_test, y_pred))
 <img width="243" height="128" alt="image" src="https://github.com/user-attachments/assets/5ed9c4d5-5040-4530-b8bd-699539e72703" />
 
     
-
+ㅡㅡ
 <img width="706" height="523" alt="image" src="https://github.com/user-attachments/assets/45379ef8-dffd-4e9c-872a-c2b4d3ea8e96" />
 
 
@@ -233,7 +239,7 @@ print('Ensemble Model Classification Report:\n')
 print(classification_report(y_test, y_pred))
 ~~~
 - 앙상블의 리포트 출력
-- 앙상블의 precision/recall/f1 출
+- 앙상블의 precision/recall/f1 출력
 
 
 ### Feature Importance 확인 (랜덤 포레스트 기준)
@@ -265,7 +271,10 @@ sns.barplot(x=list(accuracies.keys()) + ['Ensemble'], y=list(accuracies.values()
 
 <img width="699" height="483" alt="image" src="https://github.com/user-attachments/assets/4bfbdf0a-7ad6-44bb-a8fa-8fa99308df70" />
 
+<결론>
+
 1️⃣ 랜덤 포레스트와 그래디언트 부스팅 모델은 높은 정확도를 보임
+
 2️⃣ 변수 중요도 분석을 통해서 태아 건강 예측에 영향을 미치는 주요 요인을 확인함
 
 
