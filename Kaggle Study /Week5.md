@@ -77,6 +77,7 @@ plt.show()
 - 수치형 변수들끼리의 heatmap 확인
 
 <img width="690" height="648" alt="image" src="https://github.com/user-attachments/assets/f5788962-f693-47d8-8963-1e7148ea5812" />
+
 ~~~python
 X = df.drop(columns=['fetal_health'])
 y = df['fetal_health']
