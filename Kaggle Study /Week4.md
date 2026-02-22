@@ -286,7 +286,7 @@ ani.save('animation.gif', writer='imagemagick', fps=2)
 
 2️⃣ 이동량이 많을수록 화살표가 두꺼움
 
-### 택시 이동 양상 지도 위에 시각화 - (2) 시간대별 가중치 적용 이동 흐름 애니메이션
+### 택시 이동 양상 지도 위에 시각화 - (3) 시간대별 가중치 적용 이동 흐름 애니메이션
 
 ~~~python
 pct = np.true_divide(num_of_rides, len(df[df.pickup_hour == hour]))
