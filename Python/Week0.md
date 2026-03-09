@@ -84,7 +84,8 @@ data = [np.random.standard_normal() for i in range(7)]
 data
 ```
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="1471" height="278" alt="image" src="https://github.com/user-attachments/assets/bc18c95e-0a8c-44b4-8a89-1fbd952235d2" />
+
 
 ### 주피터 노트북 실행하기 
 
@@ -93,12 +94,17 @@ data
 코드 셀에 print("Hello, World!")를 입력하고 실행한 뒤, 출력 결과가 나타난 화면을 캡처하여 제출해주세요.
 ```
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="1068" height="829" alt="image" src="https://github.com/user-attachments/assets/d653d465-f3b7-492e-9b1c-47ef36c4de3e" />
+
 
 
 ## 파이썬 기초  
 
-<!-- 이 부분을 지우고 파이썬 기초에 대해 새롭게 배우게 된 내용을 정리해주세요. -->
+작은 데이터를 다루기 위한 표 기반 분석과 데이터 준비 도구를 사용하기 위해서는 방대한 데이터를 처리하기 쉽도록 깔끔하게 구조화된 형태로 다듬어야 한다. 
+
+파이썬은 그런 데이터를 원하는 모양으로 쉽게 다듬을 수 있는 이상적인 언어다. 
+
+파이썬이 익숙해지면 데이터 분석을 위한 데이터를 준비하는 과정을 더 쉽게 할 수 있다.
 
 
 ---
@@ -114,7 +120,7 @@ data = [44059, 44050, 39, 52626, 54623, 38]
 print("".join(chr(x ^ key) for x in data))
 ```
 
-<!-- 이 부분을 지우고 인증 사진을 제출해주세요.-->
+<img width="1072" height="336" alt="image" src="https://github.com/user-attachments/assets/4f21fdcd-fdd8-4ce6-bf9c-9e6fa27bd379" />
 
 ### 🎉 수고하셨습니다.
 
