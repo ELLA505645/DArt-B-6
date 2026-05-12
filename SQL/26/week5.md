@@ -45,30 +45,43 @@ https://www.youtube.com/watch?v=bggWVsBmKag&list=PLVsNizTWUw7GCfy5RH27cQL5MeKYnl
 
 ## 1. 스토어드 프로시저 사용 방법 
 
-<!-- 스토어드 프로시저에 관해 배우게 된 점을 적어주세요. -->
+스토어드 프로시저란 MySQL에서 제공하는 프로그래밍 기능임.
+MySQL 내부에서 사용할 때 적절한 프로그래밍 기능을 제공해준다.
+
 
 <!-- 이번 챕터에서는 확인문제를 실습 인증으로 대체하여 진행합니다. 제시된 실습을 흐름에 맞게 진행한 후, 실습 과정이 보일 수 있도록 인증 사진을 2장 이상 제출해 주세요. -->
 
-<!-- 이 부분을 지우고 인증사진을 제출해주세요.-->
+<img width="1026" height="581" alt="image" src="https://github.com/user-attachments/assets/50daf3b9-f59f-43ed-9422-57582940b4d0" />
+
+<img width="1008" height="618" alt="image" src="https://github.com/user-attachments/assets/0cec9394-734a-41f4-b11b-a99e9c0e2752" />
 
 
 ## 2. 스토어드 함수와 커서 
 
-<!-- 스토어드 함수와 커서에 관해 배우게 된 점을 적어주세요. -->
+스토어드 함수는 MySQL에서 제공하는 내장 함수 외에 직접 함수를 만드는 기능을 제공한다.
+MySQL이 제공하는 함수를 그대로 사용할 수 없는 경우가 발생한다면 직접 스토어드 함수를 작성해서 사용할 수 있다. 
 
 <!-- 이번 챕터에서는 확인문제를 실습 인증으로 대체하여 진행합니다. 제시된 실습을 흐름에 맞게 진행한 후, 실습 과정이 보일 수 있도록 인증 사진을 2장 이상 제출해 주세요. -->
 
-<!-- 이 부분을 지우고 인증사진을 제출해주세요.-->
+<img width="841" height="449" alt="image" src="https://github.com/user-attachments/assets/1592db35-5820-4fc2-915c-b1ab3699317b" />
+
+<img width="861" height="602" alt="image" src="https://github.com/user-attachments/assets/798505ed-3d0e-4be6-b57f-2190ec6dd4fd" />
+
+<img width="821" height="566" alt="image" src="https://github.com/user-attachments/assets/04fb68d9-be6b-42ca-8216-8bc221ee8252" />
 
 
 ## 3. 자동 실행되는 트리거 
 
-<!-- 트리거에 관해 배우게 된 점을 적어주세요. -->
+트리거는 INSERT, UPDATE, DELETE 문이 작동할 때 자동으로 실행되는 프로그래밍 기능임.
+트리거를 사용하면 데이터가 삭제될 때 해당 데이터를 다른 곳에 자동으로 백업할 수 있다. 
+*트리거는 자동으로 수행되어 사용자가 추가 작업을 잊어버리는 실수를 방지해줌.
+
 
 <!-- 이번 챕터에서는 확인문제를 실습 인증으로 대체하여 진행합니다. 제시된 실습을 흐름에 맞게 진행한 후, 실습 과정이 보일 수 있도록 인증 사진을 2장 이상 제출해 주세요. -->
 
-<!-- 이 부분을 지우고 인증사진을 제출해주세요.-->
+<img width="817" height="553" alt="image" src="https://github.com/user-attachments/assets/b5afd51f-3f3d-4ede-9b30-4f218523d0c1" />
 
+<img width="938" height="566" alt="image" src="https://github.com/user-attachments/assets/ed21d9f6-b368-48ef-8f03-69c2e7382171" />
 
 ---
 
@@ -160,7 +173,14 @@ INSERT INTO accounts VALUES
 - accounts 잔액이 자동으로 증가하는지 확인하시오.
 
 
-<!-- 이 부분을 지우고 인증사진을 제출해주세요.-->
+<img width="1057" height="555" alt="image" src="https://github.com/user-attachments/assets/2bc1a0e0-cb18-4e42-b3ee-a546f981f4e1" />
+
+<img width="1068" height="564" alt="image" src="https://github.com/user-attachments/assets/7a2e20ce-ae1b-4b3b-9cfc-33b2c34e4367" />
+
+<img width="1098" height="599" alt="image" src="https://github.com/user-attachments/assets/31857154-2239-404c-ba68-95ea05ba48e7" />
+
+<img width="1060" height="564" alt="image" src="https://github.com/user-attachments/assets/9ff87fc7-01a2-4009-9a1d-6cfd3dd49e74" />
+
 
 
 ### 🎉 수고하셨습니다.
