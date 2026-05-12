@@ -113,32 +113,39 @@
 
 <img width="898" height="538" alt="image" src="https://github.com/user-attachments/assets/3c1f9cf2-fc24-4467-9b59-4cbf96946fbf" />
 
+<img width="917" height="754" alt="image" src="https://github.com/user-attachments/assets/89694b81-b7cc-45a1-bff6-51310e8b1bb2" />
 
 
 ## 5. 데이터 합치기 
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+-pandas.merge： 하나 이상의 키를 기준으로 DataFrame의 행을 연결한다. SQL이나 다른 관계형 데이 
+터베이스의 조인
+-pandas.concat： 하나의 축을 따라 객체를 이어 붙인다
+-combine_first ； 두 객체를 겹쳐서 한 객체에서 누락된 데이터를 다른 객체에 있는 값으로 채운다
 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="922" height="726" alt="image" src="https://github.com/user-attachments/assets/db8ef8ed-482e-433f-93f7-693e47ffd338" />
+<img width="872" height="706" alt="image" src="https://github.com/user-attachments/assets/30ef79aa-77b5-4a6a-a26c-5441004472fd" />
+
 
 
 ## 6. 재구성과 피벗 
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+표 형식의 데이터를 재배치하는 다양한 기본 연산을 재구성 또는 피벗연산이라 부른다.
 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="924" height="819" alt="image" src="https://github.com/user-attachments/assets/8763010c-1dc9-4493-a903-852c627bdaf8" />
+<img width="754" height="624" alt="image" src="https://github.com/user-attachments/assets/60c61000-0f2d-4d3a-8b7e-a729551bd669" />
 
 
 
@@ -187,7 +194,13 @@ purchases = pd.DataFrame({
   - print()를 이용해 병합된 최종 데이터프레임을 출력하세요.
 ```
 
-<!-- 이 부분을 지우고 인증 사진을 제출해주세요.-->
+<img width="898" height="513" alt="image" src="https://github.com/user-attachments/assets/e9f9d521-274d-4cb7-b15e-56e9a3fcb335" />
+
+<img width="881" height="321" alt="image" src="https://github.com/user-attachments/assets/2f4ec335-0070-40bc-8e2b-af64eb000a5a" />
+
+<img width="891" height="604" alt="image" src="https://github.com/user-attachments/assets/744c2837-4e69-48a7-81be-a302a21daf1c" />
+
+
 
 
 
