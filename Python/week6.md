@@ -124,46 +124,61 @@
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="607" height="716" alt="image" src="https://github.com/user-attachments/assets/190e1d98-59b5-4206-8094-74ec354d1bf8" />
+
+<img width="609" height="450" alt="image" src="https://github.com/user-attachments/assets/ef0f200c-bc8c-457e-8506-24e527c0d8da" />
 
 
 ## 6. apply 메서드: 일반적인 분리-적용-병합 
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+apply 메서드는 객체를 여러 조각으로 나누고, 전달된 함수를 각 조각에 일괄적으로 적용한 후 이를 다시 합친다.
+
 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="603" height="823" alt="image" src="https://github.com/user-attachments/assets/d8ad6936-84b0-4e80-b75c-5ce49e5f4ed1" />
+
+<img width="602" height="553" alt="image" src="https://github.com/user-attachments/assets/48097a67-6103-4b81-939e-4f561a896c40" />
 
 
 ## 7. 그룹 변환과 래핑되지 않은 groupby
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+transform 메서드는 apply와 유사하지만 더 많은 제약 사항을 갖는다.
+
+1) 그룹 모양대로 브로드캐스팅할 스칼라 값을 생성할 수 있다.
+2) 입력 그룹과 동일한 모양의 객체를 생설할 수 있다.
+3) 입력을 변경하면 안된다.
+
 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="596" height="664" alt="image" src="https://github.com/user-attachments/assets/ec09e7a7-8331-4bf8-8468-d6c6999bb8d0" />
+<img width="596" height="542" alt="image" src="https://github.com/user-attachments/assets/61c9c534-f4af-4470-9e92-07489b0215ef" />
+
 
 
 ## 8. 피벗 테이블과 교차표 
 
 ### 개념정리
 
-<!-- 이 부분을 지우고 새롭게 배우게 된 내용을 정리해주세요. -->
+피벗 테이블은 스프레드시트 프로그램과 다른 데이터 분석 소프트웨어에서 흔히 볼 수 있는 데이터 요약 도구다. 
+데이터를 하나 이상의 키로 수집해서 어떤 키는 행에, 어떤 키는 열에 나열해서 데이터를 정리한다.
 
 ### 실습 인증
 
 <!-- 예제 실습을 진행한 후, 실행 화면을 2-3장 캡쳐하여 제출해주세요. -->
 
-<!-- 이 부분을 지우고 실행 화면을 제출해주세요. -->
+<img width="602" height="660" alt="image" src="https://github.com/user-attachments/assets/4721f5b6-5ac8-4869-a2d7-eeb5a028428f" />
+
+<img width="583" height="717" alt="image" src="https://github.com/user-attachments/assets/932374ea-8865-40f5-afcc-e86ff6c234d4" />
 
 
 
